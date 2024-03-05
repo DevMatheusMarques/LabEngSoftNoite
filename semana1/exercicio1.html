@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-        fetch('../../navbar.html')
+        fetch('../navbar.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar').innerHTML = data;
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <a href="../semana1/selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
+    <a href="./semana1/selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

@@ -8,7 +8,7 @@
 </head>
 <body>
   <script>
-    fetch('../../navbar.html')
+    fetch('../navbar.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('navbar').innerHTML = data;
@@ -70,6 +70,6 @@
           <a href="exercicio4.html" class="btn bg-info-subtle">Acessar</a>
         </div>
     </div>
-    <a href="/index.html" class="btn bg-info-subtle ms-5" style="margin-bottom: -40px;">Voltar a Home</a><br><br><br>
+    <a href="./index.html" class="btn bg-info-subtle ms-5" style="margin-bottom: -40px;">Voltar a Home</a><br><br><br>
 </body>
 </html>
