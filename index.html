@@ -21,7 +21,7 @@
 </head>
 <body>
     <script>
-        fetch('../navbar.html')
+        fetch('./navbar.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar').innerHTML = data;
@@ -32,7 +32,6 @@
     </script>
     <span id="navbar"></span>
 
-    
     <br><br>
 
     <div class="card ms-5 me-5 border border-info-subtle card-style" style="margin-top: 0px;">
