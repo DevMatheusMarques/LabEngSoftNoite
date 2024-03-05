@@ -41,29 +41,16 @@
 
         function addValue() {
             event.preventDefault()
-            // Get the input value
             const inputValue = document.getElementById("inputValor").value;
-            
-            // Add the value to the array
             values.push(inputValue);
-            
-            // Sort the array
             values.sort();
-            
-            // Get the list element
             const list = document.getElementById("valueList");
-            
-            // Clear the list
             list.innerHTML = "";
-            
-            // Add each item in the array to the list
             for (let i = 0; i < values.length; i++) {
                 let listItem = document.createElement("li");
                 listItem.textContent = values[i];
                 list.appendChild(listItem);
             }
-            
-            // Clear the input field
             document.getElementById("inputValor").value = "";
         }
     </script>
