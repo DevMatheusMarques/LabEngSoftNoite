@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Exercício 5</title>
+</head>
+<body>
+    <script>
+        fetch('../navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Erro:', error);
+        });
+    </script>
+    <span id="navbar"></span>
+    
+    <form>
+        <div class="card ms-5 me-5 mt-5 border border-info-subtle">
+            <div class="card-header border border-info-subtle bg-info-subtle">
+              Semana 2
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Exercício 5</h5>
+                <p class="card-text">
+                    Implemente um script com um array cujos valores
+                sejam adicionados dinamicamente pelo usuário
+                utilizando-se formulário. A cada nova inserção exiba
+                todos os dados cadastrados em ordem alfabética em
+                uma lista ordenada do html.
+                </p><br><br>
+                <h2 class="form-title">Formulário de Inserção de Dados</h2><br><br>
+                <label for="valor" class="card-text">Informe um valor:</label><br><br>
+                <input type="number" name="inputValor" id="inputValor">
+                <button type="submit" class="btn bg-info-subtle ms-2" onclick="addValue()">Inserir</button><br><br><br>
+            </div>
+    </form>
+    <div class="card-body text-center"> 
+        <div>
+            <h2>Valores Inseridos:</h2><br><br>
+            <ol id="valueList">
+            </ol>
+        </div>
+    </div> 
+
+    <script>
+        let values = [];
+
+        function addValue() {
+            event.preventDefault()
+            // Get the input value
+            const inputValue = document.getElementById("inputValor").value;
+            
+            // Add the value to the array
+            values.push(inputValue);
+            
+            // Sort the array
+            values.sort();
+            
+            // Get the list element
+            const list = document.getElementById("valueList");
+            
+            // Clear the list
+            list.innerHTML = "";
+            
+            // Add each item in the array to the list
+            for (let i = 0; i < values.length; i++) {
+                let listItem = document.createElement("li");
+                listItem.textContent = values[i];
+                list.appendChild(listItem);
+            }
+            
+            // Clear the input field
+            document.getElementById("inputValor").value = "";
+        }
+    </script>
+    
+</body>
+</html>

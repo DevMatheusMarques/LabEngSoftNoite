@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Exercício 3</title>
+</head>
+<body>
+    <script>
+        fetch('../navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Erro:', error);
+        });
+    </script>
+    <span id="navbar"></span>
+
+    <div class="card ms-5 me-5 mt-5 border border-info-subtle">
+        <div class="card-header border border-info-subtle bg-info-subtle">
+          Semana 1
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Exercício 3</h5>
+            <p class="card-text">
+                Implemente um script JavaScript que solicite ao usuário um número inteiro
+            positivo. Assim que o usuário digitar um valor válido informe em uma janela
+            de alerta se o número é par ou ímpar.
+            </p><br><br>
+            <p class="card-text">
+                	Informe um número inteiro:
+            </p><br><br>
+            <input type="number" name="numeroInput" id="numeroInputParImpar">
+            <button id="verificaPar" class="btn bg-info-subtle ms-2">Verificar Número</button><br><br><br>
+        </div>
+    </div>
+
+    <a href="SelecaoExercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const verificaParButton = document.getElementById("verificaPar");
+            verificaParButton.addEventListener("click", verificarParOuImpar);
+        });
+
+        function verificarParOuImpar() {
+            const numeroInput = document.getElementById("numeroInputParImpar").value;
+            const numero = parseInt(numeroInput);
+
+            if (!isNaN(numero) && numero >= 0) {
+                if (numero % 2 === 0) {
+                alert(`${numero} é um número PAR.`);
+                } else {
+                alert(`${numero} é um número ÍMPAR.`);
+                }
+            } else {
+                alert("Por favor, digite um número inteiro positivo válido.");
+            }
+        }
+    </script>
+</body>
+</html>
