@@ -7,43 +7,44 @@
     <title>Exercício 7</title>
 </head>
 <body>
-    <div class="card ms-5 me-5 mt-5 border border-info-subtle">
-        <div class="card-header border border-info-subtle bg-info-subtle">
-            Semana 3
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Exercício 7</h5>
-            <p class="card-text">
-                Pesquise a utilização do método setTimeout() e implemente
-                um relógio que atualize o horário a cada segundo.
-            </p><br>
-            <p class="card-text fw-bold">
-                Relógio:
-            </p>
-            <div id="relogio" class="card-text mb-5 fw-bold fs-1"></div>
-        </div>
+<div class="card ms-5 me-5 mt-5 border border-info-subtle">
+    <div class="card-header border border-info-subtle bg-info-subtle">
+        Semana 3
     </div>
+    <div class="card-body">
+        <h5 class="card-title">Exercício 7</h5>
+        <p class="card-text">
+            Pesquise a utilização do método setTimeout() e implemente
+            um relógio que atualize o horário a cada segundo.
+        </p><br>
+        <p class="card-text fw-bold">
+            Relógio:
+        </p>
+        <div id="relogio" class="card-text mb-5 fw-bold fs-1"></div>
+    </div>
+</div>
 
-    <a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
+<a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
 
-    <script>
-        const relogio = document.getElementById("relogio");
+<script>
+    const relogio = document.getElementById("relogio");
 
-        function atualizarRelogio() {
-            var agora = new Date();
-            var horas = agora.getHours();
-            var minutos = agora.getMinutes();
-            var segundos = agora.getSeconds();
+    function atualizarRelogio() {
+        var agora = new Date();
+        var horas = agora.getHours();
+        var minutos = agora.getMinutes();
+        var segundos = agora.getSeconds();
 
-            horas = horas < 10 ? '0' + horas : horas;
-            minutos = minutos < 10 ? '0' + minutos : minutos;
-            segundos = segundos < 10 ? '0' + segundos : segundos;
+        horas = horas < 10 ? '0' + horas : horas;
+        minutos = minutos < 10 ? '0' + minutos : minutos;
+        segundos = segundos < 10 ? '0' + segundos : segundos;
 
-            var horario = horas + ':' + minutos + ':' + segundos;
+        var horario = horas + ':' + minutos + ':' + segundos;
 
-            relogio.innerHTML = horas + ':' + minutos + ':' + segundos;
-        }
-        setInterval(atualizarRelogio, 1000);
-    </script>
+        relogio.innerHTML = horas + ':' + minutos + ':' + segundos;
+    }
+
+    setInterval(atualizarRelogio, 1000);
+</script>
 </body>
 </html>

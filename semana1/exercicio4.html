@@ -7,49 +7,50 @@
     <title>Exercício 4</title>
 </head>
 <body>
-    <div class="card ms-5 me-5 mt-5 border border-info-subtle">
-        <div class="card-header border border-info-subtle bg-info-subtle">
-          Semana 1
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Exercício 4</h5>
-            <p class="card-text">
-                Implemente um script JavaScript que solicite ao usuário um número inteiro 
-            positivo. Assim que o usuário digitar um valor válido calcule o fatorial do 
-            mesmo e exiba o resultado em uma janela de alerta.
-            </p><br><br>
-            <p class="card-text">
-                	Informe um número inteiro:
-            </p><br><br>
-            <input type="number" name="numeroInputFatorial" id="numeroInputFatorial">
-            <button id="verificaFatorial" class="btn bg-info-subtle ms-2">Calcular Fatorial</button><br><br><br>
-            <div id="resultadoFatorial" class="card-text mb-5"></div>
-        </div>
+<div class="card ms-5 me-5 mt-5 border border-info-subtle">
+    <div class="card-header border border-info-subtle bg-info-subtle">
+        Semana 1
     </div>
+    <div class="card-body">
+        <h5 class="card-title">Exercício 4</h5>
+        <p class="card-text">
+            Implemente um script JavaScript que solicite ao usuário um número inteiro
+            positivo. Assim que o usuário digitar um valor válido calcule o fatorial do
+            mesmo e exiba o resultado em uma janela de alerta.
+        </p><br><br>
+        <p class="card-text">
+            Informe um número inteiro:
+        </p><br><br>
+        <input type="number" name="numeroInputFatorial" id="numeroInputFatorial">
+        <button id="verificaFatorial" class="btn bg-info-subtle ms-2">Calcular Fatorial</button>
+        <br><br><br>
+        <div id="resultadoFatorial" class="card-text mb-5"></div>
+    </div>
+</div>
 
-    <a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
+<a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const verificaFatorialButton = document.getElementById("verificaFatorial");
-            verificaFatorialButton.addEventListener("click", calculaFatorial);
-        });
-        
-        function calculaFatorial() {
-            const numeroInput = document.getElementById("numeroInputFatorial").value;
-            const resultadoFatorial = document.getElementById("resultadoFatorial");
-            const numero = parseInt(numeroInput);
-            if (numero === 0 || numero === 1) {
-                return alert(1);
-            } else {
-                let resultado = 1;
-                for (let i = 1; i <= numero; i++) {
-                    let fatorial = resultado *= i;
-                    resultadoFatorial.innerHTML = `O fatorial do número ${numeroInput} é: <strong>${fatorial}</strong>`;
-                }
-                return alert(`Fatorial = ${resultado}`);
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const verificaFatorialButton = document.getElementById("verificaFatorial");
+        verificaFatorialButton.addEventListener("click", calculaFatorial);
+    });
+
+    function calculaFatorial() {
+        const numeroInput = document.getElementById("numeroInputFatorial").value;
+        const resultadoFatorial = document.getElementById("resultadoFatorial");
+        const numero = parseInt(numeroInput);
+        if (numero === 0 || numero === 1) {
+            return alert(1);
+        } else {
+            let resultado = 1;
+            for (let i = 1; i <= numero; i++) {
+                let fatorial = resultado *= i;
+                resultadoFatorial.innerHTML = `O fatorial do número ${numeroInput} é: <strong>${fatorial}</strong>`;
             }
-        }   
-    </script>
+            return alert(`Fatorial = ${resultado}`);
+        }
+    }
+</script>
 </body>
 </html>

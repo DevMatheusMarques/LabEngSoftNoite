@@ -7,58 +7,59 @@
     <title>Exercício 1</title>
 </head>
 <body>
-    <div class="card ms-5 me-5 mt-5 border border-info-subtle">
-        <div class="card-header border border-info-subtle bg-info-subtle">
-          Semana 1
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Exercício 1</h5>
-            <p class="card-text">
-                Implemente um script JavaScript que solicite ao usuário a entrada de um
-                dado via teclado. Em seguida, pergunte se o usuário deseja verificar o tipo do
-                dado informado. Caso o usuário confirme escreva no corpo da página o tipo
-                do dado (Number, String, etc.) caso contrário escreva a mensagem: “Obrigado
-                por visitar esta página”.
-            </p><br>
-            <p class="card-text">
-                	Informe um dado:
-            </p>
-            <input type="text" name="dadoInput" id="dadoInput">
-            <button id="verificarBotao" class="btn bg-info-subtle ms-2">Verificar Tipo</button><br><br><br>
-            <div id="resultadoTipo" class="card-text mb-5"></div>
-        </div>
+<div class="card ms-5 me-5 mt-5 border border-info-subtle">
+    <div class="card-header border border-info-subtle bg-info-subtle">
+        Semana 1
     </div>
+    <div class="card-body">
+        <h5 class="card-title">Exercício 1</h5>
+        <p class="card-text">
+            Implemente um script JavaScript que solicite ao usuário a entrada de um
+            dado via teclado. Em seguida, pergunte se o usuário deseja verificar o tipo do
+            dado informado. Caso o usuário confirme escreva no corpo da página o tipo
+            do dado (Number, String, etc.) caso contrário escreva a mensagem: “Obrigado
+            por visitar esta página”.
+        </p><br>
+        <p class="card-text">
+            Informe um dado:
+        </p>
+        <input type="text" name="dadoInput" id="dadoInput">
+        <button id="verificarBotao" class="btn bg-info-subtle ms-2">Verificar Tipo</button>
+        <br><br><br>
+        <div id="resultadoTipo" class="card-text mb-5"></div>
+    </div>
+</div>
 
-    <a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
+<a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const verificarBotao = document.getElementById("verificarBotao");
-            verificarBotao.addEventListener("click", verificarTipoDado);
-        });
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const verificarBotao = document.getElementById("verificarBotao");
+        verificarBotao.addEventListener("click", verificarTipoDado);
+    });
 
-        function verificarTipoDado() {
-            const dadoInput = document.getElementById("dadoInput").value;
-            const confirmacao = confirm("Você deseja verificar o tipo do dado informado?");
-            const resultadoTipoElement = document.getElementById("resultadoTipo");
+    function verificarTipoDado() {
+        const dadoInput = document.getElementById("dadoInput").value;
+        const confirmacao = confirm("Você deseja verificar o tipo do dado informado?");
+        const resultadoTipoElement = document.getElementById("resultadoTipo");
 
-            if (confirmacao) {
-                const tipoDado = determinarTipo(dadoInput);
-                resultadoTipoElement.innerHTML = `O tipo do dado informado é: <strong>${tipoDado}</strong>`;
-            } else {
-                resultadoTipoElement.innerHTML = "Obrigado por visitar esta página.";
-            }
+        if (confirmacao) {
+            const tipoDado = determinarTipo(dadoInput);
+            resultadoTipoElement.innerHTML = `O tipo do dado informado é: <strong>${tipoDado}</strong>`;
+        } else {
+            resultadoTipoElement.innerHTML = "Obrigado por visitar esta página.";
         }
+    }
 
-        function determinarTipo(dado) {
-            if (dado === "true" || dado === "false") {
-                return "Boolean";
-            } else if (!isNaN(parseFloat(dado)) && isFinite(dado)) {
-                return "Number";
-            } else if (typeof dado === 'string') {
-                return "String";
-            }
+    function determinarTipo(dado) {
+        if (dado === "true" || dado === "false") {
+            return "Boolean";
+        } else if (!isNaN(parseFloat(dado)) && isFinite(dado)) {
+            return "Number";
+        } else if (typeof dado === 'string') {
+            return "String";
         }
-    </script>
+    }
+</script>
 </body>
 </html>

@@ -7,55 +7,56 @@
     <title>Exercício 5</title>
 </head>
 <body>
-    <form>
-        <div class="card ms-5 me-5 mt-5 border border-info-subtle">
-            <div class="card-header border border-info-subtle bg-info-subtle">
-              Semana 2
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Exercício 5</h5>
-                <p class="card-text">
-                    Implemente um script com um array cujos valores
+<form>
+    <div class="card ms-5 me-5 mt-5 border border-info-subtle">
+        <div class="card-header border border-info-subtle bg-info-subtle">
+            Semana 2
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Exercício 5</h5>
+            <p class="card-text">
+                Implemente um script com um array cujos valores
                 sejam adicionados dinamicamente pelo usuário
                 utilizando-se formulário. A cada nova inserção exiba
                 todos os dados cadastrados em ordem alfabética em
                 uma lista ordenada do html.
-                </p><br><br>
-                <h2 class="form-title">Formulário de Inserção de Dados</h2><br><br>
-                <label for="valor" class="card-text">Informe um valor:</label><br><br>
-                <input type="number" name="inputValor" id="inputValor">
-                <button type="submit" class="btn bg-info-subtle ms-2" onclick="addValue()">Inserir</button><br><br><br>
-            </div>
-    </form>
-    <div class="card-body text-center"> 
-        <div>
-            <h2>Valores Inseridos:</h2><br><br>
-            <ol id="valueList">
-            </ol>
+            </p><br><br>
+            <h2 class="form-title">Formulário de Inserção de Dados</h2><br><br>
+            <label for="valor" class="card-text">Informe um valor:</label><br><br>
+            <input type="number" name="inputValor" id="inputValor">
+            <button type="submit" class="btn bg-info-subtle ms-2" onclick="addValue()">Inserir</button>
+            <br><br><br>
         </div>
+</form>
+<div class="card-body text-center">
+    <div>
+        <h2>Valores Inseridos:</h2><br><br>
+        <ol id="valueList">
+        </ol>
     </div>
-    </div>
-    
-    <script>
-        let values = [];
+</div>
+</div>
 
-        function addValue() {
-            event.preventDefault()
-            const inputValue = document.getElementById("inputValor").value;
-            values.push(inputValue);
-            values.sort(function(a, b) {
-                return a - b;
-            });
-            const list = document.getElementById("valueList");
-            list.innerHTML = "";
-            for (let i = 0; i < values.length; i++) {
-                let listItem = document.createElement("li");
-                listItem.textContent = values[i];
-                list.appendChild(listItem);
-            }
-            document.getElementById("inputValor").value = "";
+<script>
+    let values = [];
+
+    function addValue() {
+        event.preventDefault()
+        const inputValue = document.getElementById("inputValor").value;
+        values.push(inputValue);
+        values.sort(function (a, b) {
+            return a - b;
+        });
+        const list = document.getElementById("valueList");
+        list.innerHTML = "";
+        for (let i = 0; i < values.length; i++) {
+            let listItem = document.createElement("li");
+            listItem.textContent = values[i];
+            list.appendChild(listItem);
         }
-    </script>
-    <a href="../index.html" class="btn bg-info-subtle ms-5 mt-5" style="margin-bottom: -40px;">Voltar a Home</a><br><br><br>
+        document.getElementById("inputValor").value = "";
+    }
+</script>
+<a href="../index.html" class="btn bg-info-subtle ms-5 mt-5" style="margin-bottom: -40px;">Voltar a Home</a><br><br><br>
 </body>
 </html>

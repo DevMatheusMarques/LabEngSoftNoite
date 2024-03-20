@@ -8,47 +8,48 @@
 </head>
 <body>
 
-    <div class="card ms-5 me-5 mt-5 border border-info-subtle">
-        <div class="card-header border border-info-subtle bg-info-subtle">
-          Semana 1
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Exercício 2</h5>
-            <p class="card-text">
-                Implemente um script JavaScript que solicite ao usuário um número inteiro
+<div class="card ms-5 me-5 mt-5 border border-info-subtle">
+    <div class="card-header border border-info-subtle bg-info-subtle">
+        Semana 1
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Exercício 2</h5>
+        <p class="card-text">
+            Implemente um script JavaScript que solicite ao usuário um número inteiro
             positivo. Assim que o usuário digitar um valor válido informe em uma janela
             de alerta se o número é ou não primo.
-            </p><br><br>
-            <p class="card-text">
-                	Informe um número inteiro positivo:
-            </p><br><br>
-            <input type="number" name="numeroInputPrimo" id="numeroInputPrimo">
-            <button class="btn bg-info-subtle ms-2" id="verificaPrimo">Verificar Número</button><br><br><br>
-            <div id="resposta" class="card-text"></div>
-        </div>
+        </p><br><br>
+        <p class="card-text">
+            Informe um número inteiro positivo:
+        </p><br><br>
+        <input type="number" name="numeroInputPrimo" id="numeroInputPrimo">
+        <button class="btn bg-info-subtle ms-2" id="verificaPrimo">Verificar Número</button>
+        <br><br><br>
+        <div id="resposta" class="card-text"></div>
     </div>
+</div>
 
-    <a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
+<a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const verificaPrimoButton = document.getElementById("verificaPrimo");
-            verificaPrimoButton.addEventListener("click", numPrimo);
-        });
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const verificaPrimoButton = document.getElementById("verificaPrimo");
+        verificaPrimoButton.addEventListener("click", numPrimo);
+    });
 
-        function numPrimo() {
-            const numeroInput = document.getElementById("numeroInputPrimo").value;
-            const numero = parseInt(numeroInput);
-            if (numero <= 1) {
+    function numPrimo() {
+        const numeroInput = document.getElementById("numeroInputPrimo").value;
+        const numero = parseInt(numeroInput);
+        if (numero <= 1) {
+            return alert(`${numero} não é primo.`);
+        }
+        for (let i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i === 0) {
                 return alert(`${numero} não é primo.`);
             }
-            for (let i = 2; i <= Math.sqrt(numero); i++) {
-                if (numero % i === 0) {
-                    return alert(`${numero} não é primo.`);
-                }
-            }
-            return alert(`${numero} é primo.`);
         }
-    </script>
+        return alert(`${numero} é primo.`);
+    }
+</script>
 </body>
 </html>

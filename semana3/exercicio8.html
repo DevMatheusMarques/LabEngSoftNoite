@@ -8,49 +8,50 @@
     <title>Exercício 8</title>
 </head>
 <body>
-    <div class="card ms-5 me-5 mt-5 border border-info-subtle">
-        <div class="card-header border border-info-subtle bg-info-subtle">
-            Semana 3
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Exercício 8</h5>
-            <p class="card-text">
-                Implemente um script que leia uma palavra ou frase de um
-                campo de texto e exiba em uma janela de alert se o texto é ou
-                não um palíndromo.
-            </p><br>
-            <p class="card-text">
-                Informe uma palavra ou frase:
-            </p>
-            <input type="text" name="dadoInput" id="texto">
-            <button id="verificarBotao" class="btn bg-info-subtle ms-2">Verificar Texto</button><br><br><br>
-            <div id="resultadoTipo" class="card-text mb-5"></div>
-        </div>
+<div class="card ms-5 me-5 mt-5 border border-info-subtle">
+    <div class="card-header border border-info-subtle bg-info-subtle">
+        Semana 3
     </div>
+    <div class="card-body">
+        <h5 class="card-title">Exercício 8</h5>
+        <p class="card-text">
+            Implemente um script que leia uma palavra ou frase de um
+            campo de texto e exiba em uma janela de alert se o texto é ou
+            não um palíndromo.
+        </p><br>
+        <p class="card-text">
+            Informe uma palavra ou frase:
+        </p>
+        <input type="text" name="dadoInput" id="texto">
+        <button id="verificarBotao" class="btn bg-info-subtle ms-2">Verificar Texto</button>
+        <br><br><br>
+        <div id="resultadoTipo" class="card-text mb-5"></div>
+    </div>
+</div>
 
-    <a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
+<a href="./selecao-exercicios.html" class="btn bg-info-subtle ms-5 mt-5">Voltar</a>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const verificarBotao = document.getElementById("verificarBotao");
-            verificarBotao.addEventListener("click", verificarPalindromo);
-        });
-        function verificarPalindromo() {
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const verificarBotao = document.getElementById("verificarBotao");
+        verificarBotao.addEventListener("click", verificarPalindromo);
+    });
 
-            var texto = document.getElementById('texto').value;
-            var textoFormatado = texto.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
-            var textoInvertido = textoFormatado.split('').reverse().join('');
+    function verificarPalindromo() {
 
-            if (textoFormatado === "") {
-                swal('Erro!', '"' + texto + '" não é uma palavra ou frase. Por favor insira um valor válido.', 'error');
-            }
-            else if (textoFormatado === textoInvertido) {
-                swal('Verdadeiro!', '"' + texto + '" é um palíndromo!', 'success');
-            } else {
-                swal('Falso!', '"' + texto + '" não é um palíndromo!', 'error');
-            }
-            document.getElementById("texto").value = "";
+        var texto = document.getElementById('texto').value;
+        var textoFormatado = texto.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+        var textoInvertido = textoFormatado.split('').reverse().join('');
+
+        if (textoFormatado === "") {
+            swal('Erro!', '"' + texto + '" não é uma palavra ou frase. Por favor insira um valor válido.', 'error');
+        } else if (textoFormatado === textoInvertido) {
+            swal('Verdadeiro!', '"' + texto + '" é um palíndromo!', 'success');
+        } else {
+            swal('Falso!', '"' + texto + '" não é um palíndromo!', 'error');
         }
-    </script>
+        document.getElementById("texto").value = "";
+    }
+</script>
 </body>
 </html>
