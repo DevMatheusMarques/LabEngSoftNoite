@@ -10,10 +10,10 @@
 <body>
 <div class="card mt-5 mb-5 border border-info-subtle" style="margin-left: 8%; margin-right: 8%;">
     <div class="card-header border border-info-subtle bg-info-subtle">
-        Semana 3
+        Semana 4
     </div>
     <div class="card-body shadow p-3">
-        <h5 class="card-title">Exercício 8</h5>
+        <h5 class="card-title">Exercício 9</h5>
         <p class="card-text">
             Implemente um script que altere o formulário conforme o tipo de usuário (Professor ou Aluno) exibindo assim
             os campos necessários para o cadastro de cada tipo de usuário e exibe em um alerta os dados em um array.
@@ -50,7 +50,7 @@
                 <label for="aluno">Aluno</label><br>
             </div>
             <div id="exibir"></div>
-            <button type="submit" class="btn bg-info-subtle mt-5" style="width: 180px; margin-left: 43%">Submit</button>
+            <button type="submit" id="submit" class="btn bg-info-subtle mt-5" style="width: 180px; margin-left: 43%">Submit</button>
         </form>
     </div>
 </div>
@@ -109,7 +109,26 @@
         }
     }
 
+    class Dados {
+        constructor(formulario) {
+            this.formulario = formulario;
+            this.formulario.addEventListener('submit', (event) => this.ExibirDados(event));
+        }
+
+        ExibirDados(event) {
+            event.preventDefault();
+
+            const inputs = event.target.querySelectorAll('input[type=text]');
+            const dados = {};
+            inputs.forEach(input => {
+                dados[input.id] = input.value;
+            });
+            swal('Dados:', JSON.stringify(dados));
+        }
+    }
+
     new Formulario(document.getElementById('formulario'));
+    new Dados(document.getElementById('formulario'));
 </script>
 
 </body>
