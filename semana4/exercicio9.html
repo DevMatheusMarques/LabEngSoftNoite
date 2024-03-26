@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js" defer></script>
     <title>Exercício 9</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
                 <input type="text" class="form-control" id="email">
             </div>
             <div class="mb-3 col-2">
-                <label for="date" class="form-label mt-3">Data</label>
+                <label for="date" class="form-label mt-3">Data Nascimento</label>
                 <input type="date" class="form-control" id="date">
             </div>
             <div class="mb-3 col-3">
@@ -43,93 +43,187 @@
                 <label for="telCelular" class="form-label mt-3">Telefone Celular</label>
                 <input type="tel" class="form-control" id="telCelular">
             </div>
-            <div class="mb-3 col mt-5 ms-5">
-                <input type="radio" id="professor" name="opcao" value="professor">
+            <div class="mb-3 col mt-5 ms-5" id="tipo">
+                <input type="radio" id="professor" name="tipo" value="professor">
                 <label for="professor">Professor</label><br>
-                <input type="radio" id="aluno" name="opcao" value="aluno">
+                <input type="radio" id="aluno" name="tipo" value="aluno">
                 <label for="aluno">Aluno</label><br>
             </div>
             <div id="exibir"></div>
             <button type="submit" id="submit" class="btn bg-info-subtle mt-5" style="width: 180px; margin-left: 43%">Submit</button>
         </form>
+        <button type="reset" class="btn bg-info-subtle mt-5 mb-5">Redefinir</button><br>
+
+        <a href="../index.html" class="btn bg-info-subtle mt-5">Voltar</a>
     </div>
 </div>
 
 <script>
-    class Formulario {
-        constructor(formulario) {
-            this.formulario = formulario;
-            this.radios = this.formulario.querySelectorAll('input[type=radio][name=opcao]');
-            this.init();
+    class Pessoa {
+        constructor(nome, email, dataNascimento, telefoneFixo, telefoneCelular, matricula) {
+            this.nome = nome;
+            this.email = email;
+            this.dataNascimento = dataNascimento;
+            this.telefoneFixo = telefoneFixo;
+            this.telefoneCelular = telefoneCelular;
+            this.matricula = matricula;
         }
 
-        init() {
-            this.radios.forEach((radio) => {
-                radio.addEventListener('change', (event) => this.handleRadioChange(event));
-            })
+        exibirDados() {
+            return `Nome: ${this.nome}\nEmail: ${this.email}\nData de Nascimento: ${this.dataNascimento}\nTelefone Fixo: ${this.telefoneFixo}\nCelular: ${this.telefoneCelular}\nMatrícula: ${this.matricula}`;
+        }
+    }
+
+    class Aluno extends Pessoa {
+        constructor(nome, email, dataNascimento, telefoneFixo, telefoneCelular, matricula, curso) {
+            super(nome, email, dataNascimento, telefoneFixo, telefoneCelular, matricula);
+            this.curso = curso;
         }
 
-        handleRadioChange(event) {
-            const container = document.getElementById('exibir');
-            container.innerHTML = ''
+        exibirDados() {
+            return `${super.exibirDados()}\nCurso: ${this.curso}`;
+        }
+    }
 
-            if (event.target.value === 'professor') {
-                container.innerHTML = `
-                            ${container.innerHTML}
-                            <div class="row">
-                                <div class="mb-3 col-5 mt-5">
-                                    <label for="area" class="form-label mt-3">Área</label>
-                                    <input type="text" name="area" id="area" class="form-control">
-                                </div>
-                                <div class="mb-3 col-5 mt-5">
-                                    <label for="matricula" class="form-label mt-3">Matrícula</label>
-                                    <input type="text" name="matricula" id="matricula" class="form-control">
-                                </div>
-                                <div class="mb-3 row col-12 mt-5">
-                                    <label for="lattes" class="form-label mt-3">Lattes</label>
-                                    <input type="text" name="lattes" id="lattes" class="form-control ms-3">
-                                </div>
-                            </div>
-                        `;
-            } else if (event.target.value === 'aluno') {
-                container.innerHTML = `
-                            ${container.innerHTML}
-                            <div class="row">
-                                <div class="mb-3 col-6 mt-5">
-                                    <label for="curso" class="form-label mt-3">Curso</label>
-                                    <input type="text" name="curso" id="curso" class="form-control">
-                                </div>
-                                <div class="mb-3 col-6 mt-5">
-                                    <label for="matricula" class="form-label mt-3">Matrícula</label>
-                                    <input type="text" name="matricula" id="matricula" class="form-control">
-                                </div>
-                            </div>
-                        `;
+    class Professor extends Pessoa {
+        constructor(nome, email, dataNascimento, telefoneFixo, telefoneCelular, matricula, areaAtuacao, linkLattes) {
+            super(nome, email, dataNascimento, telefoneFixo, telefoneCelular, matricula);
+            this.areaAtuacao = areaAtuacao;
+            this.linkLattes = linkLattes;
+        }
+
+        exibirDados() {
+            return `${super.exibirDados()}\nArea de Atuação: ${this.areaAtuacao}\nLattes: ${this.linkLattes}`;
+        }
+
+    }
+
+    function selecionarTipo() {
+        const aluno = document.getElementById("aluno");
+        const professor = document.getElementById("professor");
+
+        if (aluno.checked) {
+            document.getElementById("exibir").innerHTML = `
+            <div class="row">
+                <div class="mb-3 col-6 mt-5">
+                    <label for="matricula" class="form-label mt-3">Matrícula</label>
+                    <input type="text" name="matricula" id="matricula" class="form-control">
+                </div>
+                <div class="mb-3 col-6 mt-5">
+                    <label for="curso" class="form-label mt-3">Curso</label>
+                    <input type="text" name="curso" id="curso" class="form-control">
+                </div>
+            </div>`;
+        } else if (professor.checked) {
+            document.getElementById("exibir").innerHTML = `
+            <div class="row">
+                <div class="mb-3 col-5 mt-5">
+                    <label for="matricula" class="form-label mt-3">Matrícula</label>
+                    <input type="text" name="matricula" id="matricula" class="form-control">
+                </div>
+                <div class="mb-3 col-5 mt-5">
+                    <label for="area" class="form-label mt-3">Área de Atuação</label>
+                    <input type="text" name="area" id="area" class="form-control">
+                </div>
+                <div class="mb-3 row col-12 mt-5">
+                    <label for="lattes" class="form-label mt-3">Lattes</label>
+                    <input type="text" name="lattes" id="lattes" class="form-control ms-3">
+                </div>
+            </div>`;
+        }
+    }
+
+    function enviarFormulario(event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const dataNascimento = document.getElementById("date").value;
+        const telefoneFixo = document.getElementById("telFixo").value;
+        const telefoneCelular = document.getElementById("telCelular").value;
+        const tipo = document.querySelector('input[name="tipo"]:checked').value;
+
+        let matricula, curso, areaAtuacao, linkLattes;
+
+        if (tipo === "aluno") {
+            matricula = document.getElementById("matricula").value;
+            curso = document.getElementById("curso").value;
+        } else if (tipo === "professor") {
+            matricula = document.getElementById("matricula").value;
+            areaAtuacao = document.getElementById("area").value;
+            linkLattes = document.getElementById("lattes").value;
+        }
+
+        if (tipo === "aluno" || tipo === "professor") {
+            if (!matricula) {
+                Swal.fire({
+                    title: "Aviso",
+                    html: `<pre>Por favor, preencha o campo Matrícula.</pre>`,
+                    icon: "warning"
+                });
+                return;
+                alert("");
+                return;
             }
         }
-    }
 
-    class Dados {
-        constructor(formulario) {
-            this.formulario = formulario;
-            this.formulario.addEventListener('submit', (event) => this.ExibirDados(event));
+        if (tipo === "aluno") {
+            if (!curso) {
+                Swal.fire({
+                    title: "Aviso",
+                    html: `<pre>Por favor, preencha o campo Curso.</pre>`,
+                    icon: "warning"
+                });
+                return;
+            }
         }
 
-        ExibirDados(event) {
-            event.preventDefault();
+        if (tipo === "professor") {
+            if (!areaAtuacao || !linkLattes) {
+                Swal.fire({
+                    title: "Aviso",
+                    html: `<pre>Por favor, preencha todos os campos para Professor.</pre>`,
+                    icon: "warning"
+                });
+                return;
+            }
+        }
 
-            const inputs = event.target.querySelectorAll('input[type=text]');
-            const dados = {};
-            inputs.forEach(input => {
-                dados[input.id] = input.value;
+        if (tipo === "aluno") {
+            let aluno = new Aluno(nome, email, dataNascimento, telefoneFixo, telefoneCelular, matricula, curso);
+            Swal.fire({
+                title: "Dados do Aluno",
+                html: `<pre>${aluno.exibirDados()}</pre>`,
+                icon: "success"
             });
-            swal('Dados:', JSON.stringify(dados));
+        } else if (tipo === "professor") {
+            let professor = new Professor(nome, email, dataNascimento, telefoneFixo, telefoneCelular, matricula, areaAtuacao, linkLattes);
+            Swal.fire({
+                title: "Dados do Professor",
+                html: `<pre>${professor.exibirDados()}</pre>`,
+                icon: "success"
+            });
         }
     }
 
-    new Formulario(document.getElementById('formulario'));
-    new Dados(document.getElementById('formulario'));
-</script>
 
-</body>
-</html>
+    function redefinirFormulario(event){
+        window.location.reload();
+    }
+
+    const selectElement = document.getElementById("tipo");
+    selectElement.addEventListener("change", selecionarTipo);
+
+    let formulario = document.getElementById('formulario');
+    radios = formulario.querySelectorAll('input[type=radio][name=tipo]');
+
+    document.addEventListener("DOMContentLoaded", () => {
+        selecionarTipo();
+
+        const submitButton = document.querySelector("button[type=submit]");
+        submitButton.addEventListener("click", enviarFormulario);
+
+        const resetButton = document.querySelector("button[type=reset]");
+        resetButton.addEventListener("click", redefinirFormulario);
+    });
+</script>
