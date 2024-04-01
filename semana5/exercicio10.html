@@ -4,8 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Exercício 10</title>
+
+    <style>
+        .titulo {
+            text-align: center;
+        }
+
+        .total {
+            object-position: center;
+            text-align: center;
+            margin-left: 45%;
+            margin-right: 45%;
+            margin-bottom: 30px;
+            font-size: 30px;
+        }
+
+        .img-homens {
+            width: 250px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-mulheres {
+            width: 250px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .homens {
+            margin-left: 35%;
+        }
+
+        .mulheres {
+            margin-left: 56%;
+            margin-top: -40px;
+        }
+
+        .cont-homens {
+            width: 120px;
+            margin-top: 30px;
+            margin-left: 35%;
+            margin-right: 45%;
+            font-size: 30px;
+            text-align: center;
+
+        }
+
+        .cont-mulheres {
+            width: 120px;
+            margin-top: -46px;
+            margin-left: 56%;
+            margin-right: 56%;
+            font-size: 30px;
+            text-align: center;
+
+        }
+
+
+    </style>
 </head>
 <body>
 <div class="card mt-5 mb-5 border border-info-subtle" style="margin-left: 8%; margin-right: 8%;">
@@ -22,14 +79,8 @@
         <div id="container"></div>
     </div>
 </div>
-</body>
-</html>
-
 <script>
     class Contador {
-        /*h1;
-        div;
-        button;*/
         constructor() {
             this.total = 0;
             this.homens = 0;
@@ -37,61 +88,90 @@
         }
 
         atualizarContador() {
+            const container = document.getElementById('container');
+            container.innerHTML = '';
 
-            document.getElementById('container').innerHTML = `
-                <h1>Total:</h1><br>
-                <div class="cont-total">${this.total}</div><br>
-                <p class="p-homens">Homens:</p><br>
-                <p class="p-mulheres">Mulheres:</p><br>
-                <div class="cont-homens">${this.homens}</div><br>
-                <div class="cont-mulheres">${this.mulheres}</div><br>
-                <button onclick="container.inserirHomens()">Adicionar Homem</button>
-                <button onclick="container.excluirHomens()">Remover Homem</button>
-                <button onclick="container.inserirMulheres()">Adicionar Mulher</button>
-                <button onclick="container.excluirMulheres()">Remover Mulher</button>
-                `;
+            const divContainer = document.createElement('div');
+            divContainer.className = 'divContainer';
+            divContainer.id = 'divContainer';
+            container.appendChild(divContainer);
+
+            const h1 = document.createElement('h1');
+            h1.className = 'titulo';
+            h1.id = 'titulo';
+            h1.textContent = 'Total';
+            container.appendChild(h1);
+
+            const divTotal = document.createElement('div');
+            divTotal.id = 'total';
+            divTotal.className = 'total card border-2 border-black';
+            divTotal.textContent = this.total;
+            container.appendChild(divTotal);
+
+            const imgHomem = document.createElement('img');
+            imgHomem.id = 'img-homens';
+            imgHomem.className = 'img-homens';
+            imgHomem.src = 'img/homem.jpg'
+            container.appendChild(imgHomem);
+
+            const imgMulher = document.createElement('img');
+            imgMulher.id = 'img-mulheres';
+            imgMulher.className = 'img-mulheres mx-auto text-center';
+            imgMulher.src = 'img/mulher.jpg'
+            container.appendChild(imgMulher);
+
+            const h3Homens = document.createElement('h3');
+            h3Homens.id = 'homens';
+            h3Homens.className = 'homens';
+            h3Homens.textContent = 'Homens';
+            container.appendChild(h3Homens);
+
+            const h3Mulheres = document.createElement('h3');
+            h3Mulheres.id = 'mulheres';
+            h3Mulheres.className = 'mulheres';
+            h3Mulheres.textContent = 'Mulheres';
+            container.appendChild(h3Mulheres);
+
+            const divHomens = document.createElement('div');
+            divHomens.id = 'cont-homens';
+            divHomens.className = 'cont-homens card border-2 border-black';
+            divHomens.textContent = this.homens;
+            container.appendChild(divHomens);
+
+            const divMulheres = document.createElement('div');
+            divMulheres.id = 'cont-mulheres';
+            divMulheres.className = 'cont-mulheres card border-2 border-black';
+            divMulheres.textContent = this.mulheres;
+            container.appendChild(divMulheres);
+
+            const btnAdicionarHomem = document.createElement('button');
+            btnAdicionarHomem.id = 'adicionar-homem';
+            btnAdicionarHomem.className = 'adicionar-omem';
+            btnAdicionarHomem.textContent = '+';
+            btnAdicionarHomem.addEventListener('click', () => this.inserirHomens());
+            container.appendChild(btnAdicionarHomem);
+
+            const btnRemoverHomem = document.createElement('button');
+            btnRemoverHomem.id = 'remover-homem';
+            btnRemoverHomem.className = 'remover-homem';
+            btnRemoverHomem.textContent = '-';
+            btnRemoverHomem.addEventListener('click', () => this.excluirHomens());
+            container.appendChild(btnRemoverHomem);
+
+            const btnAdicionarMulher = document.createElement('button');
+            btnAdicionarMulher.id = 'adicionar-mulher';
+            btnAdicionarMulher.className = 'adicionar-mulher';
+            btnAdicionarMulher.textContent = '+';
+            btnAdicionarMulher.addEventListener('click', () => this.inserirMulheres());
+            container.appendChild(btnAdicionarMulher);
+
+            const btnRemoverMulher = document.createElement('button');
+            btnRemoverMulher.id = 'remover-mulher';
+            btnRemoverMulher.className = 'remover-mulher';
+            btnRemoverMulher.textContent = '-';
+            btnRemoverMulher.addEventListener('click', () => this.excluirMulheres());
+            container.appendChild(btnRemoverMulher);
         }
-
-        /*document.getElementById('container').createElement('h1');
-            this.h1.id = 'titulo';
-            this.h1.className = 'titulo';
-            this.h1.textContent = 'Total';
-
-            document.getElementById('container').createElement('div');
-            this.div.id = 'total';
-            this.div.className = 'total';
-            this.div.textContent = `${this.total}`;
-
-            document.getElementById('container').createElement('button');
-            this.button.id = 'adicionarHomem';
-            this.button.className = 'adicionarHomem';
-            this.div.textContent = '+';
-
-            document.getElementById('container').createElement('button');
-            this.button.id = 'removerHomem';
-            this.button.className = 'removerHomem';
-            this.div.textContent = '-';
-
-            document.createElement('button');
-            this.button.id = 'adicionarMulher';
-            this.button.className = 'adicionarMulher';
-            this.div.textContent = '+';
-
-            document.createElement('button');
-            this.button.id = 'removerMulher';
-            this.button.className = 'removerMulher';
-            this.div.textContent = '-'
-
-            document.getElementById('container').createElement('div');
-            this.div.id = 'contHomens';
-            this.div.className = 'contHomens';
-            this.div.textContent = `${this.homens}`;
-
-            document.getElementById('container').createElement('div');
-            this.div.id = 'contMulheres';
-            this.div.className = 'contMulheres';
-            this.div.textContent = `${this.mulheres}`;
-             */
 
         inserirHomens() {
             this.homens++;
@@ -125,3 +205,5 @@
     let container = new Contador();
     container.atualizarContador();
 </script>
+</body>
+</html>
