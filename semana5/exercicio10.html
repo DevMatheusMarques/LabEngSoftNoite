@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Exercício 10</title>
 
     <style>
@@ -20,10 +21,6 @@
             margin-bottom: 30px;
             font-size: 30px;
         }
-
-        /*.div-img-homens {*/
-        /*    display: flex;*/
-        /*}*/
 
         .img-homens {
             width: 250px;
@@ -45,27 +42,6 @@
             margin-top: -40px;
         }
 
-        .cont-homens {
-            width: 120px;
-            margin-top: 30px;
-            margin-left: 35%;
-            margin-right: 45%;
-            font-size: 30px;
-            text-align: center;
-
-        }
-
-        .cont-mulheres {
-            width: 120px;
-            margin-top: -46px;
-            margin-left: 56%;
-            margin-right: 56%;
-            font-size: 30px;
-            text-align: center;
-
-        }
-
-
     </style>
 </head>
 <body>
@@ -81,152 +57,196 @@
             todos os elementos do contador devem ser criados e formatados com JavaScript.
         </p><br>
         <div id="container"></div>
+        <a href="../index.html" class="btn bg-info-subtle mt-5">Voltar</a>
     </div>
 </div>
 <script>
-    prepareElements();
-    function prepareElements() {
-        const container = document.getElementById('container');
-        container.innerHTML = '';
+    class EstrturaContador {
+        estrutura() {
+            const container = document.getElementById('container');
+            container.innerHTML = '';
 
-        const divContainer = document.createElement('div');
-        divContainer.className = 'divContainer';
-        divContainer.id = 'divContainer';
-        container.appendChild(divContainer);
+            const divContainer = document.createElement('div');
+            divContainer.className = 'divContainer';
+            divContainer.id = 'divContainer';
+            container.appendChild(divContainer);
 
-        const h1 = document.createElement('h1');
-        h1.className = 'titulo';
-        h1.id = 'titulo';
-        h1.textContent = 'Total';
-        container.appendChild(h1);
+            const h1 = document.createElement('h1');
+            h1.className = 'titulo';
+            h1.id = 'titulo';
+            h1.textContent = 'Total';
+            container.appendChild(h1);
 
-        const divTotal = document.createElement('div');
-        divTotal.id = 'total';
-        divTotal.className = 'total card border-2 border-black';
-        divTotal.textContent = this.total;
-        container.appendChild(divTotal);
+            const divTotal = document.createElement('div');
+            divTotal.id = 'total';
+            divTotal.className = 'total card border-2 border-black';
+            divTotal.textContent = this.total;
+            container.appendChild(divTotal);
 
-        const divImagens = document.createElement('div');
-        divImagens.className = 'd-flex justify-content-center';
+            const divImagens = document.createElement('div');
+            divImagens.className = 'd-flex justify-content-center';
 
-        const divImgHomem = document.createElement('div');
-        divImgHomem.className = 'div-img-homens';
+            const divImgHomem = document.createElement('div');
+            divImgHomem.className = 'div-img-homens';
 
-        const imgHomem = document.createElement('img');
-        imgHomem.id = 'img-homens';
-        imgHomem.className = 'img-homens';
-        imgHomem.src = 'img/homem.jpg'
+            const imgHomem = document.createElement('img');
+            imgHomem.id = 'img-homens';
+            imgHomem.className = 'img-homens';
+            imgHomem.src = 'img/homem.jpg';
+            divImgHomem.appendChild(imgHomem);
+            divImagens.appendChild(divImgHomem);
 
 
-        divImgHomem.appendChild(imgHomem);
-        divImagens.appendChild(divImgHomem);
-        container.appendChild(divImagens);
+            const divImgMulher = document.createElement('div');
+            divImgMulher.className = 'div-img-mulher';
 
-        const divImgMulher = document.createElement('div');
-        divImgMulher.className = 'div-img-mulher';
+            const imgMulher = document.createElement('img');
+            imgMulher.id = 'img-mulheres';
+            imgMulher.className = 'img-mulheres mx-auto text-center';
+            imgMulher.src = 'img/mulher.jpg';
+            divImgMulher.appendChild(imgMulher);
+            divImagens.appendChild(divImgMulher);
 
-        const imgMulher = document.createElement('img');
-        imgMulher.id = 'img-mulheres';
-        imgMulher.className = 'img-mulheres mx-auto text-center';
-        imgMulher.src = 'img/mulher.jpg'
-        divImgMulher.appendChild(imgMulher);
+            container.appendChild(divImagens);
 
-        divImagens.appendChild(divImgMulher);
+            const divTitulos = document.createElement('div');
+            divTitulos.className = 'justify-content-center';
 
-        const h3Homens = document.createElement('h3');
-        h3Homens.id = 'homens';
-        h3Homens.className = 'homens';
-        h3Homens.textContent = 'Homens';
-        container.appendChild(h3Homens);
+            const divH3Homem = document.createElement('div');
+            divH3Homem.className = 'div-h3-homem';
 
-        const h3Mulheres = document.createElement('h3');
-        h3Mulheres.id = 'mulheres';
-        h3Mulheres.className = 'mulheres';
-        h3Mulheres.textContent = 'Mulheres';
-        container.appendChild(h3Mulheres);
+            const h3Homens = document.createElement('h3');
+            h3Homens.id = 'homens';
+            h3Homens.className = 'homens';
+            h3Homens.textContent = 'Homens';
+            divH3Homem.appendChild(h3Homens);
+            divTitulos.appendChild(divH3Homem);
 
-        const divHomens = document.createElement('div');
-        divHomens.id = 'cont-homens';
-        divHomens.className = 'cont-homens card border-2 border-black';
-        divHomens.textContent = this.homens;
-        // container.appendChild(divHomens);
+            const divH3Mulher = document.createElement('div');
+            divH3Mulher.className = 'div-h3-mulher';
 
-        const divMulheres = document.createElement('div');
-        divMulheres.id = 'cont-mulheres';
-        divMulheres.className = 'cont-mulheres card border-2 border-black';
-        divMulheres.textContent = this.mulheres;
-        // container.appendChild(divMulheres);
+            const h3Mulheres = document.createElement('h3');
+            h3Mulheres.id = 'mulheres';
+            h3Mulheres.className = 'mulheres';
+            h3Mulheres.textContent = 'Mulheres';
+            divH3Mulher.appendChild(h3Mulheres);
+            divTitulos.appendChild(divH3Mulher);
 
-        const btnAdicionarHomem = document.createElement('button');
-        btnAdicionarHomem.id = 'adicionar-homem';
-        btnAdicionarHomem.className = 'adicionar-omem';
-        btnAdicionarHomem.textContent = '+';
-        btnAdicionarHomem.addEventListener('click', () => this.inserirHomens());
-        container.appendChild(btnAdicionarHomem);
+            container.appendChild(divTitulos);
 
-        const btnRemoverHomem = document.createElement('button');
-        btnRemoverHomem.id = 'remover-homem';
-        btnRemoverHomem.className = 'remover-homem';
-        btnRemoverHomem.textContent = '-';
-        btnRemoverHomem.addEventListener('click', () => this.excluirHomens());
-        container.appendChild(btnRemoverHomem);
+            const contHomens = document.createElement('div');
+            contHomens.id = 'cont-homens';
+            contHomens.className = 'cont-homens card border-2 border-black';
+            contHomens.textContent = this.homens;
+            contHomens.style = 'width: 120px;\n' +
+                '            margin-top: 30px;\n' +
+                '            margin-left: 34%;\n' +
+                '            margin-right: 34%;\n' +
+                '            font-size: 30px;\n' +
+                '            text-align: center;'
+            container.appendChild(contHomens);
 
-        const btnAdicionarMulher = document.createElement('button');
-        btnAdicionarMulher.id = 'adicionar-mulher';
-        btnAdicionarMulher.className = 'adicionar-mulher';
-        btnAdicionarMulher.textContent = '+';
-        btnAdicionarMulher.addEventListener('click', () => this.inserirMulheres());
-        container.appendChild(btnAdicionarMulher);
+            const contMulheres = document.createElement('div');
+            contMulheres.id = 'cont-mulheres';
+            contMulheres.className = 'cont-mulheres card border-2 border-black';
+            contMulheres.textContent = this.mulheres;
+            contMulheres.style = 'width: 120px;\n' +
+                '            margin-top: -46px;\n' +
+                '            margin-left: 56%;\n' +
+                '            margin-right: 56%;\n' +
+                '            font-size: 30px;\n' +
+                '            text-align: center;'
+            container.appendChild(contMulheres);
 
-        const btnRemoverMulher = document.createElement('button');
-        btnRemoverMulher.id = 'remover-mulher';
-        btnRemoverMulher.className = 'remover-mulher';
-        btnRemoverMulher.textContent = '-';
-        btnRemoverMulher.addEventListener('click', () => this.excluirMulheres());
-        container.appendChild(btnRemoverMulher);
+            const divBotoes = document.createElement('div');
+            divBotoes.className = 'd-flex justify-content-center';
+
+            const divBotaoHomem = document.createElement('div');
+            divBotaoHomem.style = 'margin-right: 12%;\n'
+
+            const btnAdicionarHomem = document.createElement('button');
+            btnAdicionarHomem.id = 'adicionar-homem';
+            btnAdicionarHomem.className = 'mt-5 me-3 btn border border-info-subtle bg-info-subtle';
+            btnAdicionarHomem.textContent = '+';
+            btnAdicionarHomem.addEventListener('click', () => this.inserirHomens());
+            divBotaoHomem.appendChild(btnAdicionarHomem);
+            divBotoes.appendChild(divBotaoHomem);
+
+            const btnRemoverHomem = document.createElement('button');
+            btnRemoverHomem.id = 'remover-homem';
+            btnRemoverHomem.className = 'mt-5 me-3 btn border border-info-subtle bg-info-subtle';
+            btnRemoverHomem.textContent = '-';
+            btnRemoverHomem.addEventListener('click', () => this.excluirHomens());
+            divBotaoHomem.appendChild(btnRemoverHomem);
+            divBotoes.appendChild(divBotaoHomem);
+
+
+            const divBotaoMulher= document.createElement('div');
+
+            const btnAdicionarMulher = document.createElement('button');
+            btnAdicionarMulher.id = 'adicionar-mulher';
+            btnAdicionarMulher.className = 'mt-5 me-3 btn border border-info-subtle bg-info-subtle';
+            btnAdicionarMulher.textContent = '+';
+            btnAdicionarMulher.addEventListener('click', () => this.inserirMulheres());
+            divBotaoMulher.appendChild(btnAdicionarMulher);
+            divBotoes.appendChild(divBotaoMulher);
+
+            const btnRemoverMulher = document.createElement('button');
+            btnRemoverMulher.id = 'remover-mulher';
+            btnRemoverMulher.className = 'mt-5 me-3 btn border border-info-subtle bg-info-subtle';
+            btnRemoverMulher.textContent = '-';
+            btnRemoverMulher.addEventListener('click', () => this.excluirMulheres());
+            divBotaoMulher.appendChild(btnRemoverMulher);
+            divBotoes.appendChild(divBotaoMulher);
+
+            container.appendChild(divBotoes);
+        }
     }
-    class Contador {
+
+    class Contador extends EstrturaContador {
         constructor() {
+            super();
             this.total = 0;
             this.homens = 0;
             this.mulheres = 0;
         }
 
-        atualizarContador() {
-
-        }
-
         inserirHomens() {
             this.homens++;
             this.total++;
-            this.atualizarContador();
+            this.estrutura();
         }
 
         excluirHomens() {
             if (this.homens > 0) {
                 this.homens--;
                 this.total--;
-                this.atualizarContador();
+                this.estrutura();
             }
         }
 
         inserirMulheres() {
             this.mulheres++;
             this.total++;
-            this.atualizarContador();
+            this.estrutura();
         }
 
         excluirMulheres() {
             if (this.mulheres > 0) {
                 this.mulheres--;
                 this.total--;
-                this.atualizarContador();
+                this.estrutura();
             }
         }
     }
 
-    let container = new Contador();
-    container.atualizarContador();
+    let container = new EstrturaContador();
+    let contador = new Contador();
+    container.estrutura();
+    contador.inserirHomens();
+    contador.excluirHomens();
+    contador.inserirMulheres();
+    contador.excluirMulheres();
 </script>
 </body>
 </html>
